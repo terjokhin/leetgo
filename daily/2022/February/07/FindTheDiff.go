@@ -9,25 +9,15 @@ func main() {
 }
 
 func findTheDifference(s string, t string) byte {
-
-	indexes := [26]int{}
+	var result int32
 
 	for _, n := range s {
-		indexes[n-'a']--
+		result ^= n
 	}
 
 	for _, n := range t {
-		indexes[n-'a']++
+		result ^= n
 	}
 
-	var result byte
-
-	for i, e := range indexes {
-		if e > 0 {
-			result = byte('a' + i)
-			break
-		}
-	}
-
-	return result
+	return byte(result)
 }
